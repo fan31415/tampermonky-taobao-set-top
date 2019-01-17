@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EditDetailPage
 // @namespace    http://fanyijie.net/
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       fan31415
 // @match        https://item.publish.tmall.com/tmall/*

@@ -20,11 +20,9 @@ var $ = window.$;
 function goPC() {
       window.location.hash = '#struct-desc'
 }
+function delayAddFront(index) {
+  $('.set-top').eq(index-1).click(function() {
 
-function addFront() {
-    let IMG_LENGTH = 20
-    for (let index = 1; index < IMG_LENGTH; index++) {
-        $('.tm-wirless-dailog .tmall-o-image-preview').eq(index).click(function() {
             let count = index
             for (let j = count - 1; j >= 0; j--) {
                 $('.tm-wirless-dailog .next-icon-arrow-left').eq(j).click(function(e) {
@@ -34,6 +32,14 @@ function addFront() {
             }
 
         })
+}
+function addFront() {
+    let IMG_LENGTH = 20
+    for (let index = 1; index < IMG_LENGTH; index++) {
+        $('.tm-wirless-dailog .tmall-o-image-preview').eq(index).prepend('<button class="set-top" style="position:absolute;top:0;bottom:auto;text-align:center;display: block;left: 0;width: 100%;line-height: 28px;z-index:1;opacity:0;background-color:rgba(0,0,0,.6);">🔝</button>'); 
+    }
+    for (let index = 1; index < IMG_LENGTH; index++) {
+      setTimeout(delayAddFront(index), 500);
     }
 }
 function delayAdd() {

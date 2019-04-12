@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         EditDetailPage
 // @namespace    http://fanyijie.net/
-// @version      0.4
+// @version      0.5
 // @description  try to take over the world!
 // @author       fan31415
 // @match        https://xiangqing.wangpu.taobao.com/*
 // @grant        none
 // @license MIT
-// @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
+// @require      http://code.jquery.com/jquery-2.1.4.min.js
 // ==/UserScript==
 
 // ==OpenUserJS==
@@ -22,8 +22,8 @@ function goPC() {
 }
 function delayAddFront(index) {
   $('.set-top').eq(index-1).click(function() {
-
-            let count = index
+            var curIndex = $(this).parent().parent().parent().index()
+            let count = curIndex
             for (let j = count - 1; j >= 0; j--) {
                 $('.tm-img-media .next-icon-arrow-left').eq(j).click(function(e) {
                     e.stopPropagation();
@@ -36,14 +36,14 @@ function delayAddFront(index) {
 function addFront() {
     let IMG_LENGTH = 20
     for (let index = 1; index < IMG_LENGTH; index++) {
-        $('.tm-img-media .tmall-o-image-preview').eq(index).prepend('<button class="set-top" style="position:absolute;top:0;bottom:auto;text-align:center;display: block;left: 0;width: 100%;line-height: 28px;z-index:1;opacity:0;background-color:rgba(0,0,0,.6);">🔝</button>');
+        $('.tm-img-media .tmall-o-image-preview').eq(index).prepend('<button class="set-top" style="position:absolute;top:0;bottom:auto;text-align:center;display: block;left: 0;width: 100%;line-height: 70px;z-index:1;opacity:0;background-color:rgba(0,0,0,.6);">🔝</button>');
     }
     for (let index = 1; index < IMG_LENGTH; index++) {
-      setTimeout(delayAddFront(index), 500);
+      setTimeout(delayAddFront(index), 300);
     }
 }
 function delayAdd(myfunc) {
-    setTimeout(myfunc, 500)
+    setTimeout(myfunc, 300)
 }
 
 function addListener() {
@@ -59,8 +59,9 @@ function addMobilePageListener() {
 $(document).ready(function(){
   console.log("ready");
 //  setTimeout(goPC, 1000)
-  setTimeout(addMobilePageListener, 1500)
-
+  setTimeout(addMobilePageListener, 900)
+  setTimeout(()=>{$('#group1').click()}, 900)
+  setTimeout(()=>{$('.wde-image-add').eq(0).click()}, 1500)
 });// ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/

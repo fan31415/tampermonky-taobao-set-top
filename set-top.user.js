@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EditDetailPage
 // @namespace    http://fanyijie.net/
-// @version      0.5
+// @version      0.7
 // @description  try to take over the world!
 // @author       fan31415
 // @match        https://xiangqing.wangpu.taobao.com/*
@@ -41,7 +41,7 @@ function addSetTopButton() {
     }
 }
 $(document).ready(function(){
-  $('#group1').click()
+  $('.wde-item-images').click()
   $('.wde-image-add').eq(0).click()
   addSetTopButton()
 });
